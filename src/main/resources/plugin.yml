@@ -1,0 +1,34 @@
+name: epacks
+version: '1.2-ALPHA '
+main: io.starseed.epacks.Epacks
+api-version: '1.21'
+
+
+commands:
+  backpack:
+    description: Main command for backpack operations
+    usage: /<command> [get|upgrade|help|reload]
+    aliases: [bp, pack]
+
+  backpackadmin:
+    description: Admin command for backpack management
+    usage: /<command> <player> [view|clear|modify]
+    permission: epacks.admin
+
+
+permissions:
+  ebackpacks.use:
+    description: Allows players to use basic backpack features
+    default: true
+  ebackpacks.upgrade:
+    description: Allows players to upgrade their backpack
+    default: op
+  ebackpacks.admin:
+    description: Gives access to all Backpacks commands
+    default: op
+    children:
+      ebackpacks.use: true
+      ebackpacks.upgrade: true
+
+depend: [Vault]
+softdepend: [PlaceholderAPI]

@@ -1,0 +1,170 @@
+# UpgradableBackpacks Configuration
+
+# Backpack Types and Capacities
+backpack_types:
+  basic:
+    capacity: 1000
+    level_required: 0
+    material: CHEST
+    name: "&7Basic Backpack"
+    lore:
+      - "&7A basic backpack"
+      - "&7Capacity: &e{capacity}"
+  rare:
+    capacity: 2500
+    level_required: 10
+    material: ENDER_CHEST
+    name: "&bRare Backpack"
+    lore:
+      - "&bA rare backpack"
+      - "&7Capacity: &e{capacity}"
+  ultra:
+    capacity: 12000
+    level_required: 25
+    material: SHULKER_BOX
+    name: "&6Ultra Backpack"
+    lore:
+      - "&6An ultra backpack"
+      - "&7Capacity: &e{capacity}"
+
+# GUI Configuration
+backpack_gui:
+  chest_info:
+    slot: 4
+    material: CHEST
+    name: "&6Backpack Info"
+    lore:
+      - "&7Type: &e{type}"
+      - "&7Capacity: &e{capacity}"
+      - "&7Current Items: &e{current_items}/{max_capacity}"
+      - "&7Auto-Pickup: &e{auto_pickup_status}"
+      - "&7Sell Modifier: &e{sell_modifier}x"
+  showcase_button:
+    slot: 51
+    material: BOOK
+    name: "&6Backpack Types Showcase"
+    lore:
+      - "&7Click to view available backpack types"
+
+# Upgrade Configuration
+upgrades:
+  capacity:
+    base_price: 1000
+    price_multiplier: 1.5
+    base_increase: 100
+    increase_multiplier: 1.2
+    max_level: 100
+  sell_multiplier:
+    base_price: 2000
+    price_multiplier: 2.0
+    base_increase: 0.1
+    increase_multiplier: 1.1
+    max_level: 50
+
+item_lore:
+  default: "{item_name} x{amount}"
+  custom:
+    DIAMOND:
+      lore:
+        - "Shiny Diamond x{amount}"
+        -  "&7Sell Price: &6${price}"
+    GOLD_INGOT:
+      lore:
+        - "Shiny Diamond x{amount}"
+        - "&7Sell Price: &6${price}"
+
+# Auto-Pickup Configuration
+auto_pickup:
+  default_enabled: false
+  pickup_range: 3
+  filter:
+    - DIAMOND
+    - GOLD_INGOT
+    - IRON_INGOT
+
+# Economy Integration
+economy:
+  use_vault: true
+  default_sell_price: 1.0
+  custom_prices:
+    DIAMOND: 100.0
+    GOLD_INGOT: 50.0
+
+# Backpack Item
+backpack_item:
+  material: DISPENSER
+  name: "&6{owner}'s Backpack"
+  lore:
+    - "&7Right-click to open your backpack"
+    - "&7Capacity: {capacity}"
+
+# Data Storage
+data_storage:
+  file_name: "backpackdata.yml"
+
+# Sound Effects
+sounds:
+  sell_items:
+    sound: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  auto_pickup:
+    sound: ENTITY_ITEM_PICKUP
+    volume: 0.5
+    pitch: 1.2
+
+# Messages
+messages:
+  plugin_enabled: "UpgradableBackpacks has been enabled!"
+  plugin_disabled: "UpgradableBackpacks has been disabled!"
+  no_permission: "&cYou don't have permission to do that."
+  must_be_player: "&cThis command can only be used by players."
+  holding_backpack: "&cYou must be holding a backpack to use this command."
+  backpack_received: "&aYou received a {type} backpack!"
+  items_sold: "&aYou sold your backpack contents for ${amount}!"
+  sale_failed: "&cFailed to sell backpack contents."
+  money_withdrawn: "&a${amount} has been withdrawn from your account."
+  withdrawal_failed: "&cFailed to withdraw money from your account."
+  admin_command_usage: "&cUsage: /backpackadmin <player> [view|clear|modify]"
+  player_not_found: "&cPlayer not found."
+  invalid_admin_action: "&cInvalid action. Use view, clear, or modify."
+  player_no_backpack: "&cThe specified player doesn't have a backpack."
+  backpack_not_found: "&cBackpack not found for the specified player."
+  admin_view_backpack_header: "&6Backpack contents for {player}:"
+  admin_view_backpack_item: "&7- {item}: {amount}"
+  admin_clear_backpack_success: "&aSuccessfully cleared {player}'s backpack."
+  backpack_cleared_by_admin: "&cYour backpack has been cleared by an admin."
+  admin_modify_usage: "&cUsage: /backpackadmin <player> modify <add|remove> <material> <amount>"
+  invalid_material: "&cInvalid material specified."
+  invalid_amount: "&cInvalid amount specified."
+  invalid_modify_action: "&cInvalid modify action. Use 'add' or 'remove'."
+  admin_modify_backpack_success: "&aSuccessfully {action}ed {amount} {item} to/from {player}'s backpack."
+  backpack_modified_by_admin: "&cYour backpack has been modified by an admin."
+  backpack_cooldown: "&cPlease wait before using your backpack again."
+  no_backpack_types: "&cNo backpack types are configured."
+  sell_popup: "&a+ ${amount}"
+  sell_button_name: "&6Sell Contents"
+  sell_button_lore: "&7Click to sell all items in your backpack"
+  auto_pickup_button_name: "&aAuto-Pickup: {status}"
+  auto_pickup_button_lore: "&7Click to toggle auto-pickup"
+  auto_pickup_enabled: "&aAuto-pickup has been enabled for your backpack."
+  auto_pickup_disabled: "&cAuto-pickup has been disabled for your backpack."
+  sold_contents: "&aYou sold your backpack contents for &6${amount}&a!"
+  unknown_command: "&cUnknown command. Use /backpack help for a list of commands."
+  backpack_full: "&cYour backpack is full!"
+  item_added: "&aAdded {amount} {item} to your backpack."
+  item_removed: "&cRemoved {amount} {item} from your backpack."
+  database_save_success: "&aBackpack data saved successfully."
+  database_save_error: "&cError saving backpack data: {error}"
+  database_load_success: "&aBackpack data loaded successfully."
+  database_load_error: "&cError loading backpack data: {error}"
+  backpack_empty: "&cYour backpack is empty!"
+  config_reloaded: "Configuration reloaded successfully!"
+
+
+  #NO NEED TO CHANGE THESE
+  admin_select_backpack: "&6Select a backpack for {player}"
+  admin_no_backpacks: "&c{player} has no backpacks"
+  admin_backpack_selected: "&aSelected backpack: {backpack}"
+  admin_action_cancelled: "&cAction cancelled"
+  admin_invalid_backpack: "&cInvalid backpack selection"
